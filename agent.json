@@ -3,6 +3,8 @@
     "version": "0.0.1",
     "description": "console log hello world every 10 seconds",
     "runtime": "node20",
+    "public": true,
+    "version_public": true,
     "scripts": {
         "install": "",
         "start": "node index.js",
