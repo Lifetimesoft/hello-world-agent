@@ -1,14 +1,15 @@
 {
     "name": "hello-world-agent",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "console log hello world every 10 seconds",
     "runtime": "node20",
     "public": true,
     "version_public": true,
+    "pull_public": true,
     "scripts": {
         "install": "",
         "start": "node index.js",
-        "stop": "pkill -f index.js"
+        "stop": ""
     },
     "config": {
         "memory_limit": "512mb",
