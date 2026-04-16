@@ -16,8 +16,9 @@ A simple Node.js agent that prints `"hello world"` every 10 seconds.
 ## ▶️ Run the Agent
 
 ```bash
-lifectl pull hello-world-agent
-lifectl run hello-world-agent
+lifectl ai agent pull hello-world-agent
+lifectl ai agent start hello-world-agent
+lifectl ai agent stop hello-world-agent
 ```
 
 ---
