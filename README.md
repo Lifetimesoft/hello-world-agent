@@ -1,23 +1,23 @@
-# Hello World Agent (Node.js)
+# hello-world-agent
 
-A simple Node.js agent that prints `"hello world"` every 10 seconds.
+A simple hello world agent built with [`@lifetimesoft/agent-sdk`](https://www.npmjs.com/package/@lifetimesoft/agent-sdk).
+
+---
 
 ## 📦 Features
 
-* Lightweight and minimal setup
-* Runs continuously like a basic agent
+* Minimal agent using `defineAgent()` from `@lifetimesoft/agent-sdk`
+* Logs `"hello world"` via `ctx.log.info`
+* TypeScript with strict mode
 
 ---
 
 ## 🚀 Getting Started
 
----
-
-## ▶️ Run the Agent
-
 ```bash
 lifectl ai agent pull hello-world-agent
-lifectl ai agent start hello-world-agent
+lifectl ai agent run hello-world-agent
+lifectl ai agent logs hello-world-agent
 lifectl ai agent stop hello-world-agent
 ```
 
@@ -25,19 +25,24 @@ lifectl ai agent stop hello-world-agent
 
 ## 🧠 How It Works
 
-* Runs continuously in a loop
-* Prints `"hello world"` every 10 seconds
+```ts
+import { defineAgent } from "@lifetimesoft/agent-sdk"
+
+export default defineAgent({
+  async run(ctx) {
+    ctx.log.info("hello world")
+  },
+})
+```
+
+The agent is triggered by the `lifectl` runtime. Each run calls `run(ctx)` once — the runtime handles scheduling, logging, and lifecycle.
 
 ---
 
-## ⚙️ Customization
+## 🧩 Related Tools
 
----
-
-## 🛠️ Future Improvements
-
-* Logging system
-* Error handling & retries
+* [`lifectl`](https://www.npmjs.com/package/@lifetimesoft/lifectl) – CLI for running and managing agents
+* [`@lifetimesoft/agent-sdk`](https://www.npmjs.com/package/@lifetimesoft/agent-sdk) – SDK for building portable AI agents
 
 ---
 

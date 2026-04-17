@@ -1,20 +1,9 @@
-# prod
-dist/
-
-# dev
-.yarn/
-!.yarn/releases
-.vscode/*
-!.vscode/launch.json
-!.vscode/*.code-snippets
-.idea
-.idea/workspace.xml
-.idea/usage.statistics.xml
-.idea/shelf
-
 # deps
 node_modules/
 .wrangler
+
+# build
+dist/
 
 # env
 .env

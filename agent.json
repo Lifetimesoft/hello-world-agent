@@ -1,18 +1,24 @@
 {
     "name": "hello-world-agent",
-    "version": "0.0.3",
-    "description": "console log hello world every 10 seconds",
+    "version": "0.0.4",
+    "description": "A simple hello world agent built with @lifetimesoft/agent-sdk",
     "runtime": "node20",
     "public": true,
     "version_public": true,
     "pull_public": true,
     "scripts": {
-        "install": "",
-        "start": "node index.js",
+        "install": "npm install",
+        "start": "node dist/index.js",
         "stop": ""
     },
     "config": {
         "memory_limit": "512mb",
         "timeout": 3600
+    },
+    "input": {
+        "type": "none"
+    },
+    "output": {
+        "type": "none"
     }
 }

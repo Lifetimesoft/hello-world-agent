@@ -1,0 +1,17 @@
+{
+  "name": "hello-world-agent",
+  "version": "0.0.4",
+  "description": "A simple hello world agent built with @lifetimesoft/agent-sdk",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@lifetimesoft/agent-sdk": "0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "license": "MIT"
+}
