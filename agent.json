@@ -8,7 +8,7 @@
     "pull_public": true,
     "scripts": {
         "install": "npm install",
-        "start": "node dist/index.js",
+        "start": "node node_modules/@lifetimesoft/agent-sdk/dist/runtime.js",
         "stop": ""
     },
     "config": {
