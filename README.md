@@ -35,7 +35,23 @@ export default defineAgent({
 })
 ```
 
-The agent is triggered by the `lifectl` runtime. Each run calls `run(ctx)` once — the runtime handles scheduling, logging, and lifecycle.
+The `lifectl` runtime handles everything automatically:
+- Detects your package manager and runs `install`
+- Starts the agent via `agent-runtime` (from `@lifetimesoft/agent-sdk`)
+- Manages heartbeat, lifecycle, and shutdown — agent code never needs to know
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+  index.ts        ← agent logic (only thing you write)
+dist/
+  index.js        ← compiled output (built by tsc)
+package.json      ← dependencies including @lifetimesoft/agent-sdk
+agent.json        ← agent metadata (no scripts needed)
+```
 
 ---
 
