@@ -38,7 +38,9 @@ export default defineAgent({
 The `lifectl` runtime handles everything automatically:
 - Detects your package manager and runs `install`
 - Starts the agent via `agent-runtime` (from `@lifetimesoft/agent-sdk`)
-- Manages heartbeat, lifecycle, and shutdown — agent code never needs to know
+- Maintains a **WebSocket connection** to SaaS for heartbeat (hibernates between messages — near-zero cost)
+- Detects offline immediately when connection drops
+- Manages lifecycle and graceful shutdown — agent code never needs to know
 
 ---
 
