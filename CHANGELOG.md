@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.0.5] - 2026-04-19
+
+### Changed
+
+- Updated `@lifetimesoft/agent-sdk` dependency from `0.0.1` to `0.0.2`
+
+---
+
 ## [0.0.4] - 2026-04-18
 
 ### Changed

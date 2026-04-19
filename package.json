@@ -1,6 +1,6 @@
 {
   "name": "hello-world-agent",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple hello world agent built with @lifetimesoft/agent-sdk",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@lifetimesoft/agent-sdk": "0.0.1"
+    "@lifetimesoft/agent-sdk": "0.0.2"
   },
   "devDependencies": {
     "typescript": "5.9.3",
