@@ -1,6 +1,6 @@
 {
     "name": "hello-world-agent",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "A simple hello world agent built with @lifetimesoft/agent-sdk",
     "runtime": "node20",
     "main": "dist/index.js",
@@ -16,5 +16,10 @@
     },
     "output": {
         "type": "none"
-    }
+    },
+    "keywords": [
+        "hello",
+        "example",
+        "test"
+    ]
 }
