@@ -10,7 +10,7 @@
         "test:watch": "vitest"
     },
     "dependencies": {
-        "@lifetimesoft/agent-sdk": "0.0.3"
+        "@lifetimesoft/agent-sdk": "0.0.5"
     },
     "devDependencies": {
         "typescript": "5.9.3",
