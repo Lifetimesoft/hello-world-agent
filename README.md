@@ -2,14 +2,7 @@
 
 A simple hello world agent built with [`@lifetimesoft/agent-sdk`](https://www.npmjs.com/package/@lifetimesoft/agent-sdk).
 
----
-
-## 📦 Features
-
-* Minimal agent using `defineAgent()` from `@lifetimesoft/agent-sdk`
-* Logs `"hello world"` via `ctx.log.info`
-* TypeScript with strict mode
-* Scheduler support — configure via platform dashboard (none / interval / cron)
+Runs on both the **Node.js host** (`lifectl`) and the **Chrome Extension host** — same code, no changes needed.
 
 ---
 
@@ -22,29 +15,52 @@ lifectl ai agent logs hello-world-agent
 lifectl ai agent stop hello-world-agent
 ```
 
-![lifectl ai agent demo](assets/lifectl-ai-agent-01.gif)
-
 ---
 
-## 🧠 How It Works
+## 🧠 Agent Code
 
 ```ts
 import { defineAgent } from "@lifetimesoft/agent-sdk"
 
 export default defineAgent({
   async run(ctx) {
+    ctx.log.info("scheduler type: " + ctx.config.scheduler?.type)
     ctx.log.info("hello world")
   },
 })
 ```
 
-The `lifectl` runtime handles everything automatically:
-- Detects your package manager and runs `install`
-- Starts the agent via `agent-runtime` (from `@lifetimesoft/agent-sdk`)
-- Maintains a **WebSocket connection** to SaaS for heartbeat (hibernates between messages — near-zero cost)
-- Detects offline immediately when connection drops
-- Manages lifecycle and graceful shutdown — agent code never needs to know
-- Runs `run()` on schedule or on manual trigger — based on scheduler config from the platform
+---
+
+## 🔨 Build
+
+This project uses `agent-build` from `@lifetimesoft/agent-sdk` — no separate esbuild config needed.
+
+```bash
+npm run build   # bundles src/index.ts → dist/index.js
+npm run dev     # watch mode
+```
+
+`agent-build` defaults:
+- bundles all dependencies inline (self-contained — no `node_modules` needed at runtime)
+- outputs CJS format (required by `agent-runtime`)
+- `--platform=neutral` — works on both Node.js and Chrome Extension sandbox
+
+---
+
+## 📋 agent.json
+
+```json
+{
+  "name": "hello-world-agent",
+  "version": "0.0.10",
+  "runtime": "node20",
+  "main": "dist/index.js",
+  "public": true
+}
+```
+
+No `capabilities` declared → compatible with **all hosts** (Node, Chrome, future mobile).
 
 ---
 
@@ -54,9 +70,9 @@ Scheduler config is set from the platform dashboard — no code changes needed.
 
 | type | behavior |
 |---|---|
-| `none` | manual trigger only — click Trigger in the dashboard |
+| `none` | manual trigger only |
 | `interval` | runs every N milliseconds |
-| `cron` | runs on a cron schedule (e.g. `0 9 * * 1-5`) |
+| `cron` | runs on cron schedule (e.g. `0 9 * * 1-5`) |
 
 ---
 
@@ -66,32 +82,18 @@ Scheduler config is set from the platform dashboard — no code changes needed.
 src/
   index.ts        ← agent logic (only thing you write)
 dist/
-  index.js        ← compiled output (built by tsc)
-package.json      ← dependencies including @lifetimesoft/agent-sdk
+  index.js        ← self-contained bundle (built by agent-build)
 agent.json        ← agent metadata
+package.json
 ```
 
 ---
 
-## 📋 agent.json
+## 🧩 Related
 
-```json
-{
-  "name": "hello-world-agent",
-  "version": "0.0.8",
-  "runtime": "node20",
-  "main": "dist/index.js",
-  "public": true,
-  "keywords": ["hello", "example", "test"]
-}
-```
-
----
-
-## 🧩 Related Tools
-
-* [`lifectl`](https://www.npmjs.com/package/@lifetimesoft/lifectl) – CLI for running and managing agents
-* [`@lifetimesoft/agent-sdk`](https://www.npmjs.com/package/@lifetimesoft/agent-sdk) – SDK for building portable AI agents
+* [`lifectl`](https://www.npmjs.com/package/@lifetimesoft/lifectl) — CLI for running agents on Node.js
+* [`@lifetimesoft/agent-sdk`](https://www.npmjs.com/package/@lifetimesoft/agent-sdk) — SDK + `agent-build` + `agent-runtime`
+* [`chrome-extension-host`](https://github.com/Lifetimesoft/chrome-extension-host) — Chrome Extension host
 
 ---
 

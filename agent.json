@@ -1,16 +1,12 @@
 {
     "name": "hello-world-agent",
-    "version": "0.0.9",
+    "version": "0.0.11",
     "description": "A simple hello world agent built with @lifetimesoft/agent-sdk",
     "runtime": "node20",
     "main": "dist/index.js",
     "public": true,
     "version_public": true,
     "pull_public": true,
-    "config": {
-        "memory_limit": "512mb",
-        "timeout": 3600
-    },
     "input": {
         "type": "none"
     },
